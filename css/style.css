@@ -194,19 +194,22 @@ NAV TOGGLE (MOBILE) - (failsafe works)
     .nav-toggle {
         display: flex;
     }
-}
-.navbar ul{
-position:fixed;
-top:0;
-right:-100%;
-width:min(75%,320px);
-height:100vh;
-flex-direction:column;
-justify-content:center;
-gap:35px;
-background:rgba(20,0,35,.98);
-backdrop-filter:blur(14px);
-transition:right .4s ease;
+    .navbar ul{
+        position:fixed;
+        top:0;
+        right:-100%;
+        width:min(75%,320px);
+        height:100vh;
+        flex-direction:column;
+        justify-content:center;
+        gap:35px;
+        background:rgba(20,0,35,.98);
+        backdrop-filter:blur(14px);
+        transition:right .4s ease;
+    }
+    .navbar ul.active{
+        right:0;
+    }
 }
 .navbar ul.active{
 right:0;

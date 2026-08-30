@@ -94,8 +94,8 @@ if (heroSection) {
         const progress = Math.min(window.scrollY / heroHeight, 1);
 
         if (heroVideo) {
-            heroVideo.style.transform = `scale(${1 + progress * 0.12})`;
-            heroVideo.style.opacity = `${1 - progress * 0.5}`;
+            heroVideo.style.transform = `scale(${1 + progress * 0.02})`;
+            heroVideo.style.opacity = `${1 - progress * 0.3}`;
         }
 
         if (heroContent) {

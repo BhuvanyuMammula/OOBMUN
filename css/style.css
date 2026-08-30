@@ -393,6 +393,7 @@ SECTIONS
 
 section{
 padding:110px 10%;
+background:var(--purple)
 }
 
 .welcome{

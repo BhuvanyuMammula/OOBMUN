@@ -87,7 +87,7 @@
 <li><a href="schedule.html">Schedule</a></li>
 <li><a href="secretariat.html">Secretariat</a></li>
 <li><a href="gallery.html">Gallery</a></li>
-<li><a href="contact.html">Registration</a></li>
+<li><a href="contact.html">Contact</a></li>
 </ul>
 
 <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
@@ -120,33 +120,46 @@
 
 <h2>Choose Registration Type</h2>
 
-<p>Select an option below to view and fill out the form directly on the website[cite: 4].</p>
+<p>Select an option below to view and fill out the form directly on the website.</p>
 
 <!-- Registration Selection Buttons -->
 <div class="reg-options">
-  <button class="reg-btn active" onclick="showForm('intra')">Intra School Registration</button>
-  <button class="reg-btn" onclick="showForm('inter')">Inter School Registration</button>
-  <button class="reg-btn" onclick="showForm('delegation')">School Delegation Registration</button>
+  <button class="reg-btn active" onclick="showForm('intra', event)">Intra School Registration</button>
+  <button class="reg-btn" onclick="showForm('inter', event)">Inter School Registration</button>
+  <button class="reg-btn" onclick="showForm('delegation', event)">School Delegation Registration</button>
 </div>
 
 <!-- 1. Intra School Form Embed -->
 <div id="form-intra" class="form-embed-container active">
-  <iframe src="https://forms.cloud.microsoft/Pages/ShareFormPage.aspx?id=3Kez0n7Vf0GQrRSbhy6aoTV9BUXkOTdFuw2toLopxRlURjU0UThJSkVWNVk2SlhXWjBBU0RHSktRRS4u&amp;sharetoken=xAJhnsI70VfEV2Gb3F3J" title="Intra School Registration"></iframe>
+  <iframe src="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=3Kez0n7Vf0GQrRSbhy6aoTV9BUXkOTdFuw2toLopxRlURjU0UThJSkVWNVk2SlhXWjBBU0RHSktRRS4u&embed=true" title="Intra School Registration"></iframe>
 </div>
 
 <!-- 2. Inter School Form Embed -->
 <div id="form-inter" class="form-embed-container">
-  <iframe src="https://forms.cloud.microsoft/Pages/ShareFormPage.aspx?id=3Kez0n7Vf0GQrRSbhy6aoTV9BUXkOTdFuw2toLopxRlUMFY1VDNZWVFPQlBRRTAyVlpHSFJFRjJPNC4u&amp;sharetoken=ziE6RAPTCND30RaS0QB1" title="Inter School Registration"></iframe>
+  <iframe src="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=3Kez0n7Vf0GQrRSbhy6aoTV9BUXkOTdFuw2toLopxRlUMFY1VDNZWVFPQlBRRTAyVlpHSFJFRjJPNC4u&embed=true" title="Inter School Registration"></iframe>
 </div>
 
 <!-- 3. School Delegation Form Embed -->
 <div id="form-delegation" class="form-embed-container">
-  <iframe src="https://forms.cloud.microsoft/Pages/ShareFormPage.aspx?id=3Kez0n7Vf0GQrRSbhy6aoTV9BUXkOTdFuw2toLopxRlUNzcwM0pSWUxMT1NBSjVXQzYzN1hPN1c1TC4u&amp;sharetoken=FYZeYyDfhCsXo9bAIzdy" title="School Delegation Registration"></iframe>
+  <iframe src="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=3Kez0n7Vf0GQrRSbhy6aoTV9BUXkOTdFuw2toLopxRlUNzcwM0pSWUxMT1NBSjVXQzYzN1hPN1c1TC4u&embed=true" title="School Delegation Registration"></iframe>
 </div>
 
 <div class="card" style="margin-top: 50px;">
 <h3>Need Help?</h3>
 <p>If you encounter any issues with the registration embeds, feel free to reach out to us via email at <strong>oobmun@gmail.com</strong> or message us on Instagram <strong>@oobmun</strong>.</p>
+
+<div class="standard-map-box" style="margin-top: 25px;">
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11400.74472612712!2d55.61551193155962!3d25.280445434681305!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f5f0600b26dbf%3A0x6bc67199d6b6e1ed!2sGEMS%20Our%20Own%20English%20High%20School%20Boys%2C%20Sharjah%20-%20Boys!5e1!3m2!1sen!2sin!4v1785002799318!5m2!1sen!2sin" 
+    width="100%" 
+    height="350" 
+    title="OOB MUN campus location map"
+    style="border:0; border-radius: 8px;" 
+    allowfullscreen=""
+    loading="lazy" 
+    referrerpolicy="strict-origin-when-cross-origin">
+  </iframe>
+</div>
+
 </div>
 
 </section>
@@ -161,7 +174,7 @@
 
 <!-- SCRIPT TO HANDLE FORM TAB SWITCHING AND MOBILE NAV -->
 <script>
-  function showForm(formType) {
+  function showForm(formType, event) {
     // Hide all form containers
     document.querySelectorAll('.form-embed-container').forEach(container => {
       container.classList.remove('active');
@@ -175,12 +188,13 @@
     // Show selected form and set active button
     if (formType === 'intra') {
       document.getElementById('form-intra').classList.add('active');
-      event.currentTarget.classList.add('active');
     } else if (formType === 'inter') {
       document.getElementById('form-inter').classList.add('active');
-      event.currentTarget.classList.add('active');
     } else if (formType === 'delegation') {
       document.getElementById('form-delegation').classList.add('active');
+    }
+    
+    if (event && event.currentTarget) {
       event.currentTarget.classList.add('active');
     }
   }

@@ -396,13 +396,13 @@ padding:110px 10%;
 }
 
 .welcome{
-background:var(--white);
+background:var(--purple);
 }
 
 .welcome h2{
 font-family:Cinzel,serif;
 font-size:40px;
-color:var(--purple);
+color:var(--white);
 margin-bottom:20px;
 text-align:center;
 }

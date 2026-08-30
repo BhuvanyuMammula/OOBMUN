@@ -1,10 +1,6 @@
-// OOB MUN MAIN JS
-
-// Waits until the page loads
 document.addEventListener("DOMContentLoaded", () => {
 
 
-// Intro Video
 const video = document.getElementById("intro-video");
 const scroll = document.querySelector(".scroll");
 const heroContent = document.querySelector(".hero-content");
@@ -50,9 +46,6 @@ if (video) {
 
 }
     
-
-// Mobile Nav Toggle
-
 const navToggle = document.getElementById("nav-toggle");
 const navLinks = document.getElementById("nav-links");
 
@@ -89,9 +82,6 @@ if (navToggle && navLinks) {
     });
 
 }
-
-// Hero Parallax (fades/zooms the hero as you scroll past it)
-
 
 const heroSection = document.querySelector(".hero:not(.page-hero)");
 const heroVideo = document.getElementById("intro-video");
@@ -169,7 +159,7 @@ threshold:0.15
 
 });
 
-document.querySelectorAll("section").forEach(section => {
+document.querySelectorAll("section:not(.countdown)").forEach(section => {
 
 section.classList.add("hidden");
 
@@ -177,8 +167,7 @@ observer.observe(section);
 
 });
 
-// Give each card / feature panel its own staggered reveal delay
-// so grids and panels cascade in rather than popping in together.
+
 document.querySelectorAll(".card, .feature-content").forEach(el => {
 
 const siblings = Array.from(el.parentElement.children);
@@ -197,9 +186,11 @@ observer.observe(el);
 
 const timer = document.getElementById("timer");
 
-const eventDate = new Date("November 15, 2026 07:30:00").getTime();
+const eventDate = new Date("November 13, 2026 07:30:00").getTime();
 
 function updateTimer(){
+
+if(!timer) return;
 
 const now = new Date().getTime();
 

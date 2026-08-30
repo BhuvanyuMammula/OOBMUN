@@ -57,6 +57,8 @@
     overflow: hidden;
     box-shadow: 0 8px 25px rgba(0,0,0,0.3);
     background: #ffffff;
+    text-align: center;
+    padding: 20px;
   }
   .form-embed-container.active {
     display: block;
@@ -65,6 +67,27 @@
     width: 100%;
     height: 700px;
     border: none;
+  }
+  .fallback-box {
+    padding: 40px 20px;
+    background: #ffffff;
+    color: #333;
+    border-radius: 8px;
+  }
+  .fallback-btn {
+    display: inline-block;
+    margin-top: 15px;
+    background: #6b3b7a;
+    color: #fff;
+    padding: 12px 30px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s ease;
+  }
+  .fallback-btn:hover {
+    background: var(--gold);
+    color: var(--purple-dark);
   }
 </style>
 
@@ -87,7 +110,7 @@
 <li><a href="schedule.html">Schedule</a></li>
 <li><a href="secretariat.html">Secretariat</a></li>
 <li><a href="gallery.html">Gallery</a></li>
-<li><a href="contact.html">Contact</a></li>
+<li><a href="contact.html">Registration</a></li>
 </ul>
 
 <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
@@ -132,16 +155,28 @@
 <!-- 1. Intra School Form Embed -->
 <div id="form-intra" class="form-embed-container active">
   <iframe src="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=3Kez0n7Vf0GQrRSbhy6aoTV9BUXkOTdFuw2toLopxRlURjU0UThJSkVWNVk2SlhXWjBBU0RHSktRRS4u&embed=true" title="Intra School Registration"></iframe>
+  <div class="fallback-box">
+    <p>Having trouble viewing the form above?</p>
+    <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=3Kez0n7Vf0GQrRSbhy6aoTV9BUXkOTdFuw2toLopxRlURjU0UThJSkVWNVk2SlhXWjBBU0RHSktRRS4u" target="_blank" class="fallback-btn">Open Intra School Form in New Tab</a>
+  </div>
 </div>
 
 <!-- 2. Inter School Form Embed -->
 <div id="form-inter" class="form-embed-container">
   <iframe src="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=3Kez0n7Vf0GQrRSbhy6aoTV9BUXkOTdFuw2toLopxRlUMFY1VDNZWVFPQlBRRTAyVlpHSFJFRjJPNC4u&embed=true" title="Inter School Registration"></iframe>
+  <div class="fallback-box">
+    <p>Having trouble viewing the form above?</p>
+    <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=3Kez0n7Vf0GQrRSbhy6aoTV9BUXkOTdFuw2toLopxRlUMFY1VDNZWVFPQlBRRTAyVlpHSFJFRjJPNC4u" target="_blank" class="fallback-btn">Open Inter School Form in New Tab</a>
+  </div>
 </div>
 
 <!-- 3. School Delegation Form Embed -->
 <div id="form-delegation" class="form-embed-container">
   <iframe src="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=3Kez0n7Vf0GQrRSbhy6aoTV9BUXkOTdFuw2toLopxRlUNzcwM0pSWUxMT1NBSjVXQzYzN1hPN1c1TC4u&embed=true" title="School Delegation Registration"></iframe>
+  <div class="fallback-box">
+    <p>Having trouble viewing the form above?</p>
+    <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=3Kez0n7Vf0GQrRSbhy6aoTV9BUXkOTdFuw2toLopxRlUNzcwM0pSWUxMT1NBSjVXQzYzN1hPN1c1TC4u" target="_blank" class="fallback-btn">Open School Delegation Form in New Tab</a>
+  </div>
 </div>
 
 <div class="card" style="margin-top: 50px;">

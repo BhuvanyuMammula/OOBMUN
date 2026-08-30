@@ -271,7 +271,7 @@ OVERLAY
 HERO CONTENT
 */
 
-.hero-content{
+.hero-content {
     position: absolute;
     top: 48%;
     left: 50%;
@@ -284,11 +284,9 @@ HERO CONTENT
     text-align: center;
     z-index: 2;
     color: #fff;
-
     will-change: transform, opacity;
     animation: heroFade 1.5s ease forwards;
 }
-
 .hero-content.show{
     opacity: 1;
     transform: translate(-50%, -50%);

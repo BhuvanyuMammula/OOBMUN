@@ -1,5 +1,3 @@
-document.addEventListener("DOMContentLoaded", () => {
-
 
 const video = document.getElementById("intro-video");
 const scroll = document.querySelector(".scroll");
@@ -232,5 +230,3 @@ updateTimer();
 setInterval(updateTimer,1000);
 
 }
-
-});

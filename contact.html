@@ -22,7 +22,6 @@
 <script defer src="js/main.js"></script>
 
 <style>
-  /* Styles for registration tabs and embedded form container */
   .reg-options {
     display: flex;
     justify-content: center;
@@ -56,8 +55,7 @@
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-    background: #2b1338; /* Changed from white to match your purple theme */
-    text-align: center;
+    background: #2b1338;
     padding: 20px;
   }
   .form-embed-container.active {
@@ -67,19 +65,19 @@
     width: 100%;
     height: 700px;
     border: none;
+    background: transparent;
   }
   .fallback-box {
-    padding: 40px 20px;
-    background: #2b1338;
+    text-align: center;
+    padding: 20px 0 10px 0;
     color: #ffffff;
-    border-radius: 8px;
   }
   .fallback-btn {
     display: inline-block;
-    margin-top: 15px;
+    margin-top: 10px;
     background: #6b3b7a;
     color: #fff;
-    padding: 12px 30px;
+    padding: 10px 25px;
     border-radius: 6px;
     text-decoration: none;
     font-weight: 600;
@@ -110,7 +108,7 @@
 <li><a href="schedule.html">Schedule</a></li>
 <li><a href="secretariat.html">Secretariat</a></li>
 <li><a href="gallery.html">Gallery</a></li>
-<li><a href="contact.html">Contact</a></li>
+<li><a href="contact.html">Registration</a></li>
 </ul>
 
 <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
@@ -152,28 +150,25 @@
 
 <!-- 1. Intra School Form Embed -->
 <div id="form-intra" class="form-embed-container active">
-  <iframe src="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=3Kez0n7Vf0GQrRSbhy6aoTV9BUXkOTdFuw2toLopxRlURjU0UThJSkVWNVk2SlhXWjBBU0RHSktRRS4u&embed=true" title="Intra School Registration"></iframe>
+  <iframe width="640px" height="480px" src="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=3Kez0n7Vf0GQrRSbhy6aoTV9BUXkOTdFuw2toLopxRlURjU0UThJSkVWNVk2SlhXWjBBU0RHSktRRS4u&embed=true" frameborder="0" marginwidth="0" marginheight="0" style="border: none; max-width:100%; max-height:100vh" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen></iframe>
   <div class="fallback-box">
-    <p>Having trouble viewing the form above?</p>
-    <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=3Kez0n7Vf0GQrRSbhy6aoTV9BUXkOTdFuw2toLopxRlURjU0UThJSkVWNVk2SlhXWjBBU0RHSktRRS4u" target="_blank" class="fallback-btn">Open Intra School Form in New Tab</a>
+    <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=3Kez0n7Vf0GQrRSbhy6aoTV9BUXkOTdFuw2toLopxRlURjU0UThJSkVWNVk2SlhXWjBBU0RHSktRRS4u" target="_blank" class="fallback-btn">Open Intra Form in New Tab</a>
   </div>
 </div>
 
 <!-- 2. Inter School Form Embed -->
 <div id="form-inter" class="form-embed-container">
-  <iframe src="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=3Kez0n7Vf0GQrRSbhy6aoTV9BUXkOTdFuw2toLopxRlUMFY1VDNZWVFPQlBRRTAyVlpHSFJFRjJPNC4u&embed=true" title="Inter School Registration"></iframe>
+  <iframe width="640px" height="480px" src="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=3Kez0n7Vf0GQrRSbhy6aoTV9BUXkOTdFuw2toLopxRlUMFY1VDNZWVFPQlBRRTAyVlpHSFJFRjJPNC4u&embed=true" frameborder="0" marginwidth="0" marginheight="0" style="border: none; max-width:100%; max-height:100vh" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen></iframe>
   <div class="fallback-box">
-    <p>Having trouble viewing the form above?</p>
-    <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=3Kez0n7Vf0GQrRSbhy6aoTV9BUXkOTdFuw2toLopxRlUMFY1VDNZWVFPQlBRRTAyVlpHSFJFRjJPNC4u" target="_blank" class="fallback-btn">Open Inter School Form in New Tab</a>
+    <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=3Kez0n7Vf0GQrRSbhy6aoTV9BUXkOTdFuw2toLopxRlUMFY1VDNZWVFPQlBRRTAyVlpHSFJFRjJPNC4u" target="_blank" class="fallback-btn">Open Inter Form in New Tab</a>
   </div>
 </div>
 
 <!-- 3. School Delegation Form Embed -->
 <div id="form-delegation" class="form-embed-container">
-  <iframe src="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=3Kez0n7Vf0GQrRSbhy6aoTV9BUXkOTdFuw2toLopxRlUNzcwM0pSWUxMT1NBSjVXQzYzN1hPN1c1TC4u&embed=true" title="School Delegation Registration"></iframe>
+  <iframe width="640px" height="480px" src="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=3Kez0n7Vf0GQrRSbhy6aoTV9BUXkOTdFuw2toLopxRlUNzcwM0pSWUxMT1NBSjVXQzYzN1hPN1c1TC4u&embed=true" frameborder="0" marginwidth="0" marginheight="0" style="border: none; max-width:100%; max-height:100vh" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen></iframe>
   <div class="fallback-box">
-    <p>Having trouble viewing the form above?</p>
-    <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=3Kez0n7Vf0GQrRSbhy6aoTV9BUXkOTdFuw2toLopxRlUNzcwM0pSWUxMT1NBSjVXQzYzN1hPN1c1TC4u" target="_blank" class="fallback-btn">Open School Delegation Form in New Tab</a>
+    <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=3Kez0n7Vf0GQrRSbhy6aoTV9BUXkOTdFuw2toLopxRlUNzcwM0pSWUxMT1NBSjVXQzYzN1hPN1c1TC4u" target="_blank" class="fallback-btn">Open Delegation Form in New Tab</a>
   </div>
 </div>
 
@@ -245,10 +240,6 @@
     }
   });
 </script>
-
-</body>
-
-</html>
 
 </body>
 

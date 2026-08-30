@@ -6,9 +6,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Contact | OOB MUN</title>
+<title>Register | OOB MUN</title>
 
-<meta name="description" content="Get in touch with the OOB MUN team — email, Instagram and campus location for Our Own Boys Sharjah's Model United Nations conference.">
+<meta name="description" content="Register for OOB MUN 2026 — Choose between Intra School, Inter School, and School Delegation registration forms.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,6 +20,53 @@
 <link rel="stylesheet" href="css/responsive.css">
 
 <script defer src="js/main.js"></script>
+
+<style>
+  /* Styles for registration tabs and embedded form container */
+  .reg-options {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin: 30px 0;
+  }
+  .reg-btn {
+    background: #6b3b7a;
+    color: #ffffff;
+    border: none;
+    padding: 12px 24px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+  .reg-btn:hover, .reg-btn.active {
+    background: var(--gold);
+    color: var(--purple-dark);
+    transform: translateY(-2px);
+  }
+  .form-embed-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: none;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    background: #ffffff;
+  }
+  .form-embed-container.active {
+    display: block;
+  }
+  .form-embed-container iframe {
+    width: 100%;
+    height: 700px;
+    border: none;
+  }
+</style>
 
 </head>
 
@@ -43,7 +90,6 @@
 <li><a href="contact.html">Contact</a></li>
 </ul>
 
-
 <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
 <span></span>
 <span></span>
@@ -62,9 +108,9 @@
 
 <div class="hero-content">
 
-<h1>CONTACT US</h1>
+<h1>REGISTRATION</h1>
 
-<p>We'd Love to Hear From You</p>
+<p>Secure Your Spot at OOB MUN '26</p>
 
 </div>
 
@@ -72,70 +118,36 @@
 
 <section class="welcome">
 
-<h2>Get in Touch</h2>
+<h2>Choose Registration Type</h2>
 
-<p>
-Replace the information below with your official contact details.
-</p>
+<p>Select an option below to view and fill out the form directly on the website[cite: 4].</p>
 
-<div class="card">
-
-<h3>Email</h3>
-<p>oobmun@gmail.com</p>
-
-<hr style="margin:20px 0;">
-
-<h3>Instagram</h3>
-<p>@oobmun</p>
-
-<hr style="margin:20px 0;">
-
-<h3>Location</h3>
-
-<div class="standard-map-box">
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11400.74472612712!2d55.61551193155962!3d25.280445434681305!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f5f0600b26dbf%3A0x6bc67199d6b6e1ed!2sGEMS%20Our%20Own%20English%20High%20School%20Boys%2C%20Sharjah%20-%20Boys!5e1!3m2!1sen!2sin!4v1785002799318!5m2!1sen!2sin" 
-    width="1200" 
-    height="400" 
-    title="OOB MUN campus location map"
-    style="border:0;"allowfullscreen=""
-    loading="lazy" 
-    referrerpolicy="strict-origin-when-cross-origin">
-  </iframe>
+<!-- Registration Selection Buttons -->
+<div class="reg-options">
+  <button class="reg-btn active" onclick="showForm('intra')">Intra School Registration</button>
+  <button class="reg-btn" onclick="showForm('inter')">Inter School Registration</button>
+  <button class="reg-btn" onclick="showForm('delegation')">School Delegation Registration</button>
 </div>
 
-</section>
+<!-- 1. Intra School Form Embed -->
+<div id="form-intra" class="form-embed-container active">
+  <iframe src="https://forms.cloud.microsoft/Pages/ShareFormPage.aspx?id=3Kez0n7Vf0GQrRSbhy6aoTV9BUXkOTdFuw2toLopxRlURjU0UThJSkVWNVk2SlhXWjBBU0RHSktRRS4u&amp;sharetoken=xAJhnsI70VfEV2Gb3F3J" title="Intra School Registration"></iframe>
+</div>
 
-<section class="welcome">
+<!-- 2. Inter School Form Embed -->
+<div id="form-inter" class="form-embed-container">
+  <iframe src="https://forms.cloud.microsoft/Pages/ShareFormPage.aspx?id=3Kez0n7Vf0GQrRSbhy6aoTV9BUXkOTdFuw2toLopxRlUMFY1VDNZWVFPQlBRRTAyVlpHSFJFRjJPNC4u&amp;sharetoken=ziE6RAPTCND30RaS0QB1" title="Inter School Registration"></iframe>
+</div>
 
-<h2>Contact Form</h2>
+<!-- 3. School Delegation Form Embed -->
+<div id="form-delegation" class="form-embed-container">
+  <iframe src="https://forms.cloud.microsoft/Pages/ShareFormPage.aspx?id=3Kez0n7Vf0GQrRSbhy6aoTV9BUXkOTdFuw2toLopxRlUNzcwM0pSWUxMT1NBSjVXQzYzN1hPN1c1TC4u&amp;sharetoken=FYZeYyDfhCsXo9bAIzdy" title="School Delegation Registration"></iframe>
+</div>
 
-<form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-
-<input
-type="text"
-name="name"
-placeholder="Your Name"
-required>
-
-<input
-type="email"
-name="email"
-placeholder="Email Address"
-required>
-
-<textarea
-name="message"
-rows="6"
-placeholder="Your Message"
-required></textarea>
-
-<button class="btn" type="submit">
-
-Send Message
-
-</button>
-
-</form>
+<div class="card" style="margin-top: 50px;">
+<h3>Need Help?</h3>
+<p>If you encounter any issues with the registration embeds, feel free to reach out to us via email at <strong>oobmun@gmail.com</strong> or message us on Instagram <strong>@oobmun</strong>.</p>
+</div>
 
 </section>
 
@@ -147,8 +159,32 @@ Send Message
 
 </footer>
 
-<!-- FAILSAFE FOR MOBILE'S TOGGLE BAR -->
+<!-- SCRIPT TO HANDLE FORM TAB SWITCHING AND MOBILE NAV -->
 <script>
+  function showForm(formType) {
+    // Hide all form containers
+    document.querySelectorAll('.form-embed-container').forEach(container => {
+      container.classList.remove('active');
+    });
+    
+    // Remove active class from all buttons
+    document.querySelectorAll('.reg-btn').forEach(btn => {
+      btn.classList.remove('active');
+    });
+    
+    // Show selected form and set active button
+    if (formType === 'intra') {
+      document.getElementById('form-intra').classList.add('active');
+      event.currentTarget.classList.add('active');
+    } else if (formType === 'inter') {
+      document.getElementById('form-inter').classList.add('active');
+      event.currentTarget.classList.add('active');
+    } else if (formType === 'delegation') {
+      document.getElementById('form-delegation').classList.add('active');
+      event.currentTarget.classList.add('active');
+    }
+  }
+
   document.addEventListener("DOMContentLoaded", function() {
     const btn = document.getElementById("nav-toggle");
     const menu = document.getElementById("nav-links");

@@ -969,3 +969,29 @@ Mobile's shine when tapped (possibly not working)
     0% { left: -100%; }
     100% { left: 200%; }
 }
+/*
+GOOGLE FORM EMBED CONTAINERS
+*/
+
+.form-embed-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: none;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    background: #1e0033;
+    padding: 10px;
+}
+
+.form-embed-container.active {
+    display: block;
+}
+
+.form-embed-container iframe {
+    width: 100%;
+    height: 850px;
+    border: none;
+    background: transparent;
+}

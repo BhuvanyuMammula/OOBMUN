@@ -110,7 +110,7 @@ Your browser does not support the video tag.
 
 <!-- WELCOME SECTION CLASS -->
 
-<section class="welcome">
+<section class="welcome" id="welcome">
 
 <h2>Welcome to OOB MUN</h2>
 
@@ -172,12 +172,33 @@ OOB Model United Nations is a student-led conference dedicated to fostering dipl
 </section>
 
 <!-- COUNTDOWN -->
-<div class="countdown">
-<div class="countdown-container">
-    <h2>Conference Countdown</h2>
-    <div id="timer">Loading...</div>
-</div>
-</div>
+<section class="countdown">
+  <div class="countdown-container">
+    <h2 class="countdown-title">CONFERENCE COUNTDOWN</h2>
+    <p class="countdown-subtitle">Diplomacy Begins October 31, 2026</p>
+    
+    <div id="timer" class="timer-grid">
+      <div class="time-card">
+        <span id="days">00</span>
+        <p>Days</p>
+      </div>
+      <div class="time-card">
+        <span id="hours">00</span>
+        <p>Hours</p>
+      </div>
+      <div class="time-card">
+        <span id="minutes">00</span>
+        <p>Minutes</p>
+      </div>
+      <div class="time-card">
+        <span id="seconds">00</span>
+        <p>Seconds</p>
+      </div>
+    </div>
+
+    <a href="contact.html" class="hero-register-btn" style="margin-top: 40px;">Register Now</a>
+  </div>
+</section>
 
 <footer>
     <img src="images/ooblogo.png" alt="OOB MUN emblem" class="footer-logo" loading="lazy">

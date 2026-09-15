@@ -536,80 +536,143 @@ transform:scale(1.04);
 }
 
 /* =========================================
-   FULL TILE 3D FLIP & PURPLE/GOLD THEME
+   INDIVIDUAL DIGIT PAGE-FOLD COUNTDOWN
    ========================================= */
 
-.flip-card {
-    background: linear-gradient(145deg, #2c0946 0%, #16002c 100%);
-    border: 2px solid var(--gold, #d4af37);
-    border-radius: 16px;
-    width: 130px;
-    height: 130px;
+.countdown {
+    position: relative;
+    background: linear-gradient(rgba(15, 3, 25, 0.88), rgba(30, 0, 50, 0.92)), 
+                url('../images/hero.jpg') center/cover no-repeat fixed;
+    text-align: center;
+    color: white;
+    padding: 90px 20px;
+    min-height: 55vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 
-                0 0 18px rgba(212, 175, 55, 0.25),
-                inset 0 0 15px rgba(212, 175, 55, 0.12);
-    position: relative;
-    perspective: 600px;
-    transform-style: preserve-3d;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-/* Hide the old split line */
+.countdown-container {
+    max-width: 950px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.timer-grid {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.timer-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cards-pair {
+    display: flex;
+    gap: 6px;
+}
+
+/* TALL INDIVIDUAL DIGIT CARD */
+.flip-card {
+    background: linear-gradient(180deg, #2b0845 0%, #17002e 100%);
+    border: 1px solid rgba(212, 175, 55, 0.45);
+    border-radius: 12px;
+    width: 68px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.65),
+                inset 0 0 12px rgba(212, 175, 55, 0.15);
+    perspective: 500px;
+    transform-style: preserve-3d;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Ensure no middle split line exists */
 .flip-card::after {
     display: none !important;
 }
 
-/* 3D FULL CARD ROTATION ANIMATION */
-@keyframes fullTileFlip {
-    0% {
-        transform: rotateY(0deg) scale(1);
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 18px rgba(212, 175, 55, 0.25);
-    }
-    50% {
-        transform: rotateY(90deg) scale(1.08);
-        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8), 0 0 35px rgba(212, 175, 55, 0.7);
-        border-color: #ffe600;
-        background: linear-gradient(145deg, #3f0d63 0%, #230044 100%);
-    }
-    100% {
-        transform: rotateY(0deg) scale(1);
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 18px rgba(212, 175, 55, 0.25);
-    }
-}
-
-.flip-card.is-flipping {
-    animation: fullTileFlip 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
+/* DIGIT STYLING */
 .flip-card span {
     font-family: 'Poppins', sans-serif;
-    font-size: clamp(2.6rem, 4.5vw, 3.6rem);
+    font-size: 3.8rem;
     font-weight: 700;
     color: var(--gold, #d4af37);
-    text-shadow: 0 0 15px rgba(212, 175, 55, 0.6), 0 2px 8px rgba(0, 0, 0, 0.9);
-    z-index: 1;
+    text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+    line-height: 1;
 }
 
-.flip-unit p {
+/* COLON SEPARATORS */
+.colon {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--gold, #d4af37);
+    line-height: 120px;
+    margin: 0 4px;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+}
+
+.unit-label {
     font-family: 'Poppins', sans-serif;
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 2px;
     color: var(--gold, #d4af37);
-    font-weight: 600;
-    margin-top: 12px;
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+    margin-top: 14px;
+    font-weight: 500;
 }
 
-/* Hover Elevation Glow */
-.flip-card:hover {
-    transform: translateY(-8px) scale(1.03);
-    border-color: #ffd700;
-    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.75), 
-                0 0 30px rgba(212, 175, 55, 0.55);
+/* MIDDLE PAGE-FOLD ANIMATION */
+@keyframes middleFold {
+    0% {
+        transform: rotateX(0deg);
+        filter: brightness(1);
+    }
+    50% {
+        transform: rotateX(-90deg);
+        filter: brightness(0.5);
+    }
+    100% {
+        transform: rotateX(0deg);
+        filter: brightness(1);
+    }
+}
+
+.flip-card.is-flipping {
+    animation: middleFold 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+    .flip-card {
+        width: 42px;
+        height: 75px;
+        border-radius: 8px;
+    }
+    .flip-card span {
+        font-size: 2.3rem;
+    }
+    .colon {
+        font-size: 1.8rem;
+        line-height: 75px;
+        margin: 0 1px;
+    }
+    .timer-grid {
+        gap: 6px;
+    }
+    .cards-pair {
+        gap: 3px;
+    }
 }
 
 /*

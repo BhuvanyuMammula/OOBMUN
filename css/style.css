@@ -613,6 +613,7 @@ FLIP SCOREBOARD COUNTDOWN
                 4px 0 0 rgba(212, 175, 55, 0.3);
     position: relative;
     overflow: hidden;
+    perspective: 400px; /* Enables 3D flipping depth */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -627,6 +628,26 @@ FLIP SCOREBOARD COUNTDOWN
     background: rgba(212, 175, 55, 0.4);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
     z-index: 2;
+}
+
+/* FLIPPING ANIMATION KEYFRAMES */
+@keyframes cardFlip {
+    0% {
+        transform: rotateX(0deg);
+    }
+    50% {
+        transform: rotateX(-90deg);
+        filter: brightness(0.6);
+    }
+    100% {
+        transform: rotateX(0deg);
+        filter: brightness(1);
+    }
+}
+
+.flip-card.is-flipping {
+    animation: cardFlip 0.4s ease-in-out;
+    transform-style: preserve-3d;
 }
 
 .flip-card span {

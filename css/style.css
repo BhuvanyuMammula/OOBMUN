@@ -1,5 +1,5 @@
 /*
-OOB MUN THEME Cascading Style Sheet (Style)
+OOB MUN THEME Cascading Style Sheet (Style) - [ GET OUT OF INSPECT YALL ]
 */
 
 :root{
@@ -423,9 +423,9 @@ text-align:center;
 line-height:1.8;
 }
 
-/* ===========================
+/*
 HIGHLIGHTS
-=========================== */
+*/
 
 .highlights{
 display:grid;
@@ -535,9 +535,9 @@ cursor:pointer;
 transform:scale(1.04);
 }
 
-/* =========================================
-   PRODUCTION-READY PAGE-FOLD COUNTDOWN
-   ========================================= */
+/*
+COUNTDOWN
+*/
 
 .countdown {
     position: relative;
@@ -553,7 +553,7 @@ transform:scale(1.04);
     box-sizing: border-box;
 }
 
-/* Enable fixed background attachment only on non-touch desktop screens */
+
 @media (min-width: 1025px) {
     .countdown {
         background-attachment: fixed;
@@ -588,7 +588,7 @@ transform:scale(1.04);
     gap: 5px;
 }
 
-/* TALL SINGLE-DIGIT FLIP CARD */
+
 .flip-card {
     background: linear-gradient(180deg, #2b0845 0%, #17002e 100%);
     border: 1px solid rgba(212, 175, 55, 0.5);
@@ -625,7 +625,7 @@ transform:scale(1.04);
     backface-visibility: hidden;
 }
 
-/* COLON SEPARATORS */
+
 .colon {
     font-family: 'Poppins', sans-serif;
     font-size: 2.5rem;
@@ -653,7 +653,7 @@ transform:scale(1.04);
     margin-top: 35px;
 }
 
-/* 3D MIDDLE PAGE-FOLD ANIMATION */
+
 @keyframes middleFold {
     0% {
         transform: rotateX(0deg);
@@ -673,9 +673,9 @@ transform:scale(1.04);
     animation: middleFold 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* =========================================
-   RESPONSIVE BREAKPOINTS
-   ========================================= */
+/*
+RESPONSIVE BREAKPOINTS
+*/
 
 @media (max-width: 768px) {
     .flip-card {

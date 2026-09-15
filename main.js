@@ -167,17 +167,25 @@ function updateTimer(){
     const mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const secs = Math.floor((distance % (1000 * 60)) / 1000);
 
-    // Helper function to update text and trigger the flip animation only when value changes
+   // Helper function: Flips the full card tile and updates the text halfway through the flip
     function setDigit(element, newValue) {
         const formatted = String(newValue).padStart(2, '0');
         if (element.innerText !== formatted) {
-            element.innerText = formatted;
             const card = element.closest('.flip-card');
             if (card) {
                 card.classList.add('is-flipping');
+                
+                // Swap digit halfway through 3D rotation (200ms)
+                setTimeout(() => {
+                    element.innerText = formatted;
+                }, 200);
+
+                // Remove class after full animation completes (400ms)
                 setTimeout(() => {
                     card.classList.remove('is-flipping');
-                }, 400); // Matches CSS animation duration
+                }, 400);
+            } else {
+                element.innerText = formatted;
             }
         }
     }

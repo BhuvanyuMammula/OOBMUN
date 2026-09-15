@@ -201,20 +201,20 @@
 
 </footer>
 
-<!-- SCRIPT TO HANDLE FORM TAB SWITCHING AND MOBILE NAV -->
+<!--TAB SWITCHING AND MOBILE NAV -->
 <script>
   function showForm(formType, event) {
-    // Hide all form containers
+    
     document.querySelectorAll('.form-embed-container').forEach(container => {
       container.classList.remove('active');
     });
     
-    // Remove active class from all buttons
+    
     document.querySelectorAll('.reg-btn').forEach(btn => {
       btn.classList.remove('active');
     });
     
-    // Show selected form and set active button
+    
     if (formType === 'intra') {
       document.getElementById('form-intra').classList.add('active');
     } else if (formType === 'inter') {

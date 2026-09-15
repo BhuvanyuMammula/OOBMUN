@@ -1,7 +1,7 @@
 const video = document.getElementById("intro-video");
 const scroll = document.querySelector(".scroll");
 const heroContent = document.querySelector(".hero-content");
-// GET OUT OF INSPECT COPYRIGHT LAW APPLIES
+// GET OUT OF INSPECT COPYRIGHT LAWS APPLY
 if (scroll) {
     scroll.style.opacity = "0";
     scroll.style.transition = "opacity 1s ease";
@@ -97,24 +97,20 @@ if (heroSection) {
     });
 }
 
-
 // Navbar Background
-
 const navbar = document.querySelector(".navbar");
 
 window.addEventListener("scroll", () => {
-    if(!navbar) return;
+    if (!navbar) return;
 
-    if(window.scrollY > 50){
+    if (window.scrollY > 50) {
         navbar.classList.add("scrolled");
-    }else{
+    } else {
         navbar.classList.remove("scrolled");
     }
 });
 
-
 // Fade-in Animations
-
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -122,7 +118,7 @@ const observer = new IntersectionObserver((entries) => {
         }
     });
 }, {
-    threshold:0.15
+    threshold: 0.15
 });
 
 document.querySelectorAll("section:not(.countdown)").forEach(section => {
@@ -152,20 +148,17 @@ function setSingleDigit(elementId, newChar) {
     if (el.innerText !== newChar) {
         const card = el.closest('.flip-card');
         if (card) {
-            // Cancel pending timeout calls when user switches browser tabs
             if (card.dataset.flipTimer1) clearTimeout(Number(card.dataset.flipTimer1));
             if (card.dataset.flipTimer2) clearTimeout(Number(card.dataset.flipTimer2));
 
             card.classList.remove('is-flipping');
-            void card.offsetWidth; // Force instant DOM reflow for CSS animation reset
+            void card.offsetWidth;
             card.classList.add('is-flipping');
 
-            // Swap digit character exactly at 3D fold midpoint (175ms)
             const t1 = setTimeout(() => {
                 el.innerText = newChar;
             }, 175);
 
-            // Remove CSS animation class upon completion (350ms)
             const t2 = setTimeout(() => {
                 card.classList.remove('is-flipping');
             }, 350);
@@ -200,7 +193,6 @@ function updateTimer() {
     const mins = String(totalMins).padStart(2, '0');
     const secs = String(totalSecs).padStart(2, '0');
 
-    // Slice last two digits for days to maintain 2-digit layout consistency
     const formattedDays = days.length > 2 ? days.slice(-2) : days;
 
     setSingleDigit("days1", formattedDays[0]);
@@ -213,7 +205,6 @@ function updateTimer() {
     setSingleDigit("secs2", secs[1]);
 }
 
-// Safely execute initial tick and interval loop
 if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", () => {
         updateTimer();
@@ -222,4 +213,52 @@ if (document.readyState === "loading") {
 } else {
     updateTimer();
     setInterval(updateTimer, 1000);
+}
+
+// =========================================
+// REGISTRATION MODAL POPUP LOGIC
+// =========================================
+
+const modalOverlay = document.getElementById("registration-modal");
+const modalCloseBtn = document.querySelector(".modal-close");
+const modalConfirmBtn = document.querySelector(".modal-confirm-btn");
+const openModalBtns = document.querySelectorAll(".hero-register-btn, .open-modal-btn");
+
+function openRegistrationModal() {
+    if (modalOverlay) {
+        modalOverlay.classList.add("active");
+        document.body.style.overflow = "hidden";
+    }
+}
+
+function closeRegistrationModal() {
+    if (modalOverlay) {
+        modalOverlay.classList.remove("active");
+        document.body.style.overflow = "";
+    }
+}
+
+if (openModalBtns.length > 0) {
+    openModalBtns.forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            openRegistrationModal();
+        });
+    });
+}
+
+if (modalCloseBtn) {
+    modalCloseBtn.addEventListener("click", closeRegistrationModal);
+}
+
+if (modalConfirmBtn) {
+    modalConfirmBtn.addEventListener("click", closeRegistrationModal);
+}
+
+if (modalOverlay) {
+    modalOverlay.addEventListener("click", (e) => {
+        if (e.target === modalOverlay) {
+            closeRegistrationModal();
+        }
+    });
 }

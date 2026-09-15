@@ -1,4 +1,147 @@
-// COMPLETE PRODUCTION LOGIC FOR main.js
+const video = document.getElementById("intro-video");
+const scroll = document.querySelector(".scroll");
+const heroContent = document.querySelector(".hero-content");
+
+if (scroll) {
+    scroll.style.opacity = "0";
+    scroll.style.transition = "opacity 1s ease";
+}
+
+if (heroContent) {
+    heroContent.style.opacity = "0";
+    heroContent.style.transform = "translate(-50%, -45%)";
+    heroContent.style.transition =
+        "opacity 1.5s ease, transform 1.5s ease";
+}
+
+if (video) {
+    video.loop = false;
+
+    setTimeout(() => {
+        if (heroContent) {
+            heroContent.style.opacity = "1";
+            heroContent.style.transform = "translate(-50%, -50%)";
+        }
+    }, 700);
+
+    video.addEventListener("ended", () => {
+        video.pause();
+
+        if (scroll) {
+            scroll.style.opacity = "1";
+        }
+    });
+}
+    
+const navToggle = document.getElementById("nav-toggle");
+const navLinks = document.getElementById("nav-links");
+
+if (navToggle && navLinks) {
+    navToggle.addEventListener("click", (e) => {
+        e.stopPropagation(); // Prevents instant closing on click
+        const isOpen = navLinks.classList.toggle("active");
+        navToggle.classList.toggle("active");
+        navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        
+        document.body.style.overflow = isOpen ? "hidden" : "";
+    });
+
+    navLinks.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => {
+            navLinks.classList.remove("active");
+            navToggle.classList.remove("active");
+            navToggle.setAttribute("aria-expanded", "false");
+            document.body.style.overflow = "";
+        });
+    });
+
+    document.addEventListener("click", (e) => {
+        if (navLinks.classList.contains("active") && !navLinks.contains(e.target) && !navToggle.contains(e.target)) {
+            navLinks.classList.remove("active");
+            navToggle.classList.remove("active");
+            navToggle.setAttribute("aria-expanded", "false");
+            document.body.style.overflow = "";
+        }
+    });
+}
+
+const heroSection = document.querySelector(".hero:not(.page-hero)");
+const heroVideo = document.getElementById("intro-video");
+
+if (heroSection) {
+    let ticking = false;
+
+    const updateHeroParallax = () => {
+        const heroHeight = heroSection.offsetHeight;
+        const progress = Math.min(window.scrollY / heroHeight, 1);
+
+        if (heroVideo) {
+            heroVideo.style.transform = `scale(${1 + progress * 0.02})`;
+            heroVideo.style.opacity = `${1 - progress * 0.3}`;
+        }
+
+        if (heroContent) {
+            heroContent.style.opacity = `${1 - progress * 1.2}`;
+            heroContent.style.transform =
+                `translate(-50%, calc(-50% + ${progress * 80}px))`;
+        }
+
+        ticking = false;
+    };
+
+    window.addEventListener("scroll", () => {
+        if (!ticking) {
+            requestAnimationFrame(updateHeroParallax);
+            ticking = true;
+        }
+    });
+}
+
+
+// Navbar Background
+
+const navbar = document.querySelector(".navbar");
+
+window.addEventListener("scroll", () => {
+    if(!navbar) return;
+
+    if(window.scrollY > 50){
+        navbar.classList.add("scrolled");
+    }else{
+        navbar.classList.remove("scrolled");
+    }
+});
+
+
+// Fade-in Animations
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+        }
+    });
+}, {
+    threshold:0.15
+});
+
+document.querySelectorAll("section:not(.countdown)").forEach(section => {
+    section.classList.add("hidden");
+    observer.observe(section);
+});
+
+document.querySelectorAll(".card, .feature-content").forEach(el => {
+    const siblings = Array.from(el.parentElement.children);
+    const index = siblings.indexOf(el);
+
+    el.style.transitionDelay = `${(index % 6) * 100}ms`;
+    el.classList.add("hidden");
+    observer.observe(el);
+});
+
+// =========================================
+// PRODUCTION-GRADE FLIP COUNTDOWN LOGIC
+// =========================================
 
 const eventDate = new Date("October 31, 2026 08:00:00").getTime();
 
@@ -9,15 +152,15 @@ function setSingleDigit(elementId, newChar) {
     if (el.innerText !== newChar) {
         const card = el.closest('.flip-card');
         if (card) {
-            // Cancel pending timers when tab is backgrounded to prevent animation stutter
+            // Cancel pending timeout calls when user switches browser tabs
             if (card.dataset.flipTimer1) clearTimeout(Number(card.dataset.flipTimer1));
             if (card.dataset.flipTimer2) clearTimeout(Number(card.dataset.flipTimer2));
 
             card.classList.remove('is-flipping');
-            void card.offsetWidth; // Force DOM reflow to restart CSS animation instantly
+            void card.offsetWidth; // Force instant DOM reflow for CSS animation reset
             card.classList.add('is-flipping');
 
-            // Swap digit at the 3D fold midpoint (175ms)
+            // Swap digit character exactly at 3D fold midpoint (175ms)
             const t1 = setTimeout(() => {
                 el.innerText = newChar;
             }, 175);
@@ -57,7 +200,7 @@ function updateTimer() {
     const mins = String(totalMins).padStart(2, '0');
     const secs = String(totalSecs).padStart(2, '0');
 
-    // Slice last two digits for days to maintain 2-card alignment
+    // Slice last two digits for days to maintain 2-digit layout consistency
     const formattedDays = days.length > 2 ? days.slice(-2) : days;
 
     setSingleDigit("days1", formattedDays[0]);
@@ -70,8 +213,13 @@ function updateTimer() {
     setSingleDigit("secs2", secs[1]);
 }
 
-// Safely execute after DOM is ready
-document.addEventListener("DOMContentLoaded", () => {
+// Safely execute initial tick and interval loop
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => {
+        updateTimer();
+        setInterval(updateTimer, 1000);
+    });
+} else {
     updateTimer();
     setInterval(updateTimer, 1000);
-});
+}

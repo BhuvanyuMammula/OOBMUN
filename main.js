@@ -250,7 +250,7 @@ if (modalOverlay) {
 }
 
 // Manual triggers via buttons
-if (openModalBtns.length > 0) {
+if (openModalBtns.length > 0 && modalOverlay) {
     openModalBtns.forEach(btn => {
         btn.addEventListener("click", (e) => {
             e.preventDefault();

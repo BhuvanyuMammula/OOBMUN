@@ -1,7 +1,7 @@
 const video = document.getElementById("intro-video");
 const scroll = document.querySelector(".scroll");
 const heroContent = document.querySelector(".hero-content");
-
+// GET OUT OF INSPECT COPYRIGHT LAW APPLIES
 if (scroll) {
     scroll.style.opacity = "0";
     scroll.style.transition = "opacity 1s ease";
@@ -38,7 +38,7 @@ const navLinks = document.getElementById("nav-links");
 
 if (navToggle && navLinks) {
     navToggle.addEventListener("click", (e) => {
-        e.stopPropagation(); // Prevents instant closing on click
+        e.stopPropagation(); 
         const isOpen = navLinks.classList.toggle("active");
         navToggle.classList.toggle("active");
         navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");

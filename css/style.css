@@ -536,20 +536,28 @@ transform:scale(1.04);
 }
 
 /* =========================================
-   INDIVIDUAL DIGIT PAGE-FOLD COUNTDOWN
+   PRODUCTION-READY PAGE-FOLD COUNTDOWN
    ========================================= */
 
 .countdown {
     position: relative;
     background: linear-gradient(rgba(15, 3, 25, 0.88), rgba(30, 0, 50, 0.92)), 
-                url('../images/hero.jpg') center/cover no-repeat fixed;
+                url('../images/hero.jpg') center/cover no-repeat;
     text-align: center;
-    color: white;
-    padding: 90px 20px;
-    min-height: 55vh;
+    color: #ffffff;
+    padding: 80px 15px;
+    min-height: 50vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-sizing: border-box;
+}
+
+/* Enable fixed background attachment only on non-touch desktop screens */
+@media (min-width: 1025px) {
+    .countdown {
+        background-attachment: fixed;
+    }
 }
 
 .countdown-container {
@@ -561,10 +569,12 @@ transform:scale(1.04);
 .timer-grid {
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
-    gap: 12px;
+    gap: 10px;
     margin-top: 25px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .timer-group {
@@ -575,64 +585,75 @@ transform:scale(1.04);
 
 .cards-pair {
     display: flex;
-    gap: 6px;
+    gap: 5px;
 }
 
-/* TALL INDIVIDUAL DIGIT CARD */
+/* TALL SINGLE-DIGIT FLIP CARD */
 .flip-card {
     background: linear-gradient(180deg, #2b0845 0%, #17002e 100%);
-    border: 1px solid rgba(212, 175, 55, 0.45);
-    border-radius: 12px;
-    width: 68px;
-    height: 120px;
+    border: 1px solid rgba(212, 175, 55, 0.5);
+    border-radius: 10px;
+    width: 64px;
+    height: 110px;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.65),
-                inset 0 0 12px rgba(212, 175, 55, 0.15);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.65),
+                inset 0 0 10px rgba(212, 175, 55, 0.15);
     perspective: 500px;
+    -webkit-perspective: 500px;
     transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
     position: relative;
     overflow: hidden;
+    box-sizing: border-box;
 }
 
-/* Ensure no middle split line exists */
 .flip-card::after {
     display: none !important;
 }
 
-/* DIGIT STYLING */
 .flip-card span {
     font-family: 'Poppins', sans-serif;
-    font-size: 3.8rem;
+    font-size: 3.5rem;
     font-weight: 700;
     color: var(--gold, #d4af37);
-    text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+    text-shadow: 0 0 12px rgba(212, 175, 55, 0.5);
     line-height: 1;
+    user-select: none;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 }
 
 /* COLON SEPARATORS */
 .colon {
     font-family: 'Poppins', sans-serif;
-    font-size: 2.8rem;
+    font-size: 2.5rem;
     font-weight: 700;
     color: var(--gold, #d4af37);
-    line-height: 120px;
-    margin: 0 4px;
+    margin: 0 2px;
+    margin-bottom: 28px;
     text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+    user-select: none;
 }
 
 .unit-label {
     font-family: 'Poppins', sans-serif;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 2px;
     color: var(--gold, #d4af37);
-    margin-top: 14px;
+    margin-top: 12px;
+    margin-bottom: 0;
     font-weight: 500;
 }
 
-/* MIDDLE PAGE-FOLD ANIMATION */
+.hero-register-btn {
+    display: inline-block;
+    margin-top: 35px;
+}
+
+/* 3D MIDDLE PAGE-FOLD ANIMATION */
 @keyframes middleFold {
     0% {
         transform: rotateX(0deg);
@@ -640,7 +661,7 @@ transform:scale(1.04);
     }
     50% {
         transform: rotateX(-90deg);
-        filter: brightness(0.5);
+        filter: brightness(0.4);
     }
     100% {
         transform: rotateX(0deg);
@@ -652,11 +673,14 @@ transform:scale(1.04);
     animation: middleFold 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* MOBILE RESPONSIVE */
+/* =========================================
+   RESPONSIVE BREAKPOINTS
+   ========================================= */
+
 @media (max-width: 768px) {
     .flip-card {
-        width: 42px;
-        height: 75px;
+        width: 44px;
+        height: 78px;
         border-radius: 8px;
     }
     .flip-card span {
@@ -664,14 +688,61 @@ transform:scale(1.04);
     }
     .colon {
         font-size: 1.8rem;
-        line-height: 75px;
-        margin: 0 1px;
+        margin-bottom: 22px;
     }
     .timer-grid {
-        gap: 6px;
+        gap: 5px;
     }
     .cards-pair {
         gap: 3px;
+    }
+}
+
+@media (max-width: 520px) {
+    .countdown {
+        padding: 50px 10px;
+    }
+    .timer-grid {
+        gap: 2px;
+    }
+    .cards-pair {
+        gap: 2px;
+    }
+    .flip-card {
+        width: 32px;
+        height: 58px;
+        border-radius: 6px;
+    }
+    .flip-card span {
+        font-size: 1.6rem;
+    }
+    .colon {
+        font-size: 1.2rem;
+        margin-bottom: 18px;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .unit-label {
+        font-size: 0.62rem;
+        letter-spacing: 0.5px;
+        margin-top: 8px;
+    }
+}
+
+@media (max-width: 360px) {
+    .flip-card {
+        width: 27px;
+        height: 50px;
+    }
+    .flip-card span {
+        font-size: 1.35rem;
+    }
+    .colon {
+        font-size: 1rem;
+        margin-bottom: 14px;
+    }
+    .unit-label {
+        font-size: 0.52rem;
     }
 }
 

@@ -139,7 +139,6 @@ document.querySelectorAll(".card, .feature-content").forEach(el => {
     observer.observe(el);
 });
 
-
 // Countdown Timer
 
 const eventDate = new Date("October 31, 2026 08:00:00").getTime();
@@ -168,10 +167,25 @@ function updateTimer(){
     const mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const secs = Math.floor((distance % (1000 * 60)) / 1000);
 
-    daysEl.innerText = String(days).padStart(2, '0');
-    hoursEl.innerText = String(hours).padStart(2, '0');
-    minutesEl.innerText = String(mins).padStart(2, '0');
-    secondsEl.innerText = String(secs).padStart(2, '0');
+    // Helper function to update text and trigger the flip animation only when value changes
+    function setDigit(element, newValue) {
+        const formatted = String(newValue).padStart(2, '0');
+        if (element.innerText !== formatted) {
+            element.innerText = formatted;
+            const card = element.closest('.flip-card');
+            if (card) {
+                card.classList.add('is-flipping');
+                setTimeout(() => {
+                    card.classList.remove('is-flipping');
+                }, 400); // Matches CSS animation duration
+            }
+        }
+    }
+
+    setDigit(daysEl, days);
+    setDigit(hoursEl, hours);
+    setDigit(minutesEl, mins);
+    setDigit(secondsEl, secs);
 }
 
 updateTimer();

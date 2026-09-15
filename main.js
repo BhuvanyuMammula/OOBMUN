@@ -139,61 +139,59 @@ document.querySelectorAll(".card, .feature-content").forEach(el => {
     observer.observe(el);
 });
 
-// Countdown Timer
+// COUNTDOWN TIMER LOGIC
 
 const eventDate = new Date("October 31, 2026 08:00:00").getTime();
 
+function setSingleDigit(elementId, newChar) {
+    const el = document.getElementById(elementId);
+    if (!el) return;
+
+    if (el.innerText !== newChar) {
+        const card = el.closest('.flip-card');
+        if (card) {
+            card.classList.add('is-flipping');
+            
+            // Swap digit halfway through the fold (175ms)
+            setTimeout(() => {
+                el.innerText = newChar;
+            }, 175);
+
+            // Remove animation class after completion (350ms)
+            setTimeout(() => {
+                card.classList.remove('is-flipping');
+            }, 350);
+        } else {
+            el.innerText = newChar;
+        }
+    }
+}
+
 function updateTimer(){
-    const daysEl = document.getElementById("days");
-    const hoursEl = document.getElementById("hours");
-    const minutesEl = document.getElementById("minutes");
-    const secondsEl = document.getElementById("seconds");
-
-    if (!daysEl || !hoursEl || !minutesEl || !secondsEl) return;
-
     const now = new Date().getTime();
     const distance = eventDate - now;
 
     if(distance < 0){
-        daysEl.innerText = "00";
-        hoursEl.innerText = "00";
-        minutesEl.innerText = "00";
-        secondsEl.innerText = "00";
+        ['days1','days2','hours1','hours2','mins1','mins2','secs1','secs2'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.innerText = "0";
+        });
         return;
     }
 
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const secs = Math.floor((distance % (1000 * 60)) / 1000);
+    const days = String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, '0');
+    const hours = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+    const mins = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+    const secs = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
 
-   // Helper function: Flips the full card tile and updates the text halfway through the flip
-    function setDigit(element, newValue) {
-        const formatted = String(newValue).padStart(2, '0');
-        if (element.innerText !== formatted) {
-            const card = element.closest('.flip-card');
-            if (card) {
-                card.classList.add('is-flipping');
-                
-                // Swap digit halfway through 3D rotation (200ms)
-                setTimeout(() => {
-                    element.innerText = formatted;
-                }, 200);
-
-                // Remove class after full animation completes (400ms)
-                setTimeout(() => {
-                    card.classList.remove('is-flipping');
-                }, 400);
-            } else {
-                element.innerText = formatted;
-            }
-        }
-    }
-
-    setDigit(daysEl, days);
-    setDigit(hoursEl, hours);
-    setDigit(minutesEl, mins);
-    setDigit(secondsEl, secs);
+    setSingleDigit("days1", days[0]);
+    setSingleDigit("days2", days[1]);
+    setSingleDigit("hours1", hours[0]);
+    setSingleDigit("hours2", hours[1]);
+    setSingleDigit("mins1", mins[0]);
+    setSingleDigit("mins2", mins[1]);
+    setSingleDigit("secs1", secs[0]);
+    setSingleDigit("secs2", secs[1]);
 }
 
 updateTimer();

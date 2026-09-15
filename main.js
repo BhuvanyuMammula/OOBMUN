@@ -238,6 +238,18 @@ function closeRegistrationModal() {
     }
 }
 
+// Automatically launch modal on contact.html load
+if (modalOverlay) {
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", () => {
+            setTimeout(openRegistrationModal, 400);
+        });
+    } else {
+        setTimeout(openRegistrationModal, 400);
+    }
+}
+
+// Manual triggers via buttons
 if (openModalBtns.length > 0) {
     openModalBtns.forEach(btn => {
         btn.addEventListener("click", (e) => {
@@ -247,13 +259,9 @@ if (openModalBtns.length > 0) {
     });
 }
 
-if (modalCloseBtn) {
-    modalCloseBtn.addEventListener("click", closeRegistrationModal);
-}
-
-if (modalConfirmBtn) {
-    modalConfirmBtn.addEventListener("click", closeRegistrationModal);
-}
+// Dismiss controls
+if (modalCloseBtn) modalCloseBtn.addEventListener("click", closeRegistrationModal);
+if (modalConfirmBtn) modalConfirmBtn.addEventListener("click", closeRegistrationModal);
 
 if (modalOverlay) {
     modalOverlay.addEventListener("click", (e) => {

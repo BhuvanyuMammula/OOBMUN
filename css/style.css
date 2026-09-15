@@ -177,7 +177,6 @@ NAV TOGGLE (MOBILE) - (failsafe works)
     transition: all 0.3s ease;
 }
 
-
 .nav-toggle.active span:nth-child(1) {
     transform: translateY(9px) rotate(45deg);
 }
@@ -553,7 +552,6 @@ COUNTDOWN
     box-sizing: border-box;
 }
 
-
 @media (min-width: 1025px) {
     .countdown {
         background-attachment: fixed;
@@ -587,7 +585,6 @@ COUNTDOWN
     display: flex;
     gap: 5px;
 }
-
 
 .flip-card {
     background: linear-gradient(180deg, #2b0845 0%, #17002e 100%);
@@ -625,7 +622,6 @@ COUNTDOWN
     backface-visibility: hidden;
 }
 
-
 .colon {
     font-family: 'Poppins', sans-serif;
     font-size: 2.5rem;
@@ -652,7 +648,6 @@ COUNTDOWN
     display: inline-block;
     margin-top: 35px;
 }
-
 
 @keyframes middleFold {
     0% {
@@ -1153,6 +1148,7 @@ Mobile's shine when tapped (possibly not working)
     0% { left: -100%; }
     100% { left: 200%; }
 }
+
 /*
 GOOGLE FORM EMBED CONTAINERS
 */
@@ -1178,4 +1174,143 @@ GOOGLE FORM EMBED CONTAINERS
     height: 850px;
     border: none;
     background: transparent;
+}
+
+/* =========================================
+   REGISTRATION ANNOUNCEMENT POPUP MODAL
+   ========================================= */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(10, 2, 18, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-card {
+    background: linear-gradient(145deg, #280a3c 0%, #1e0033 100%);
+    border: 2px solid var(--gold);
+    border-radius: 18px;
+    max-width: 560px;
+    width: 100%;
+    padding: 35px 30px 20px;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85),
+                0 0 30px rgba(212, 175, 55, 0.25);
+    transform: scale(0.9) translateY(20px);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    color: #ffffff;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.modal-overlay.active .modal-card {
+    transform: scale(1) translateY(0);
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    color: var(--gold);
+    font-size: 2.2rem;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.modal-close:hover {
+    color: #ffffff;
+    transform: scale(1.15);
+}
+
+.modal-heading {
+    font-family: 'Bodoni Moda', serif;
+    font-size: 2rem;
+    color: var(--gold);
+    margin-bottom: 20px;
+    letter-spacing: 1.5px;
+}
+
+/* ENLARGED ANNOUNCEMENT PARAGRAPH */
+.modal-notice-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.3rem;
+    line-height: 1.7;
+    color: #f5f5f5;
+    margin-bottom: 25px;
+    padding: 0 10px;
+}
+
+.modal-notice-text strong {
+    color: var(--gold);
+    font-weight: 700;
+}
+
+.modal-confirm-btn {
+    background: var(--gold);
+    color: #1e0033;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    padding: 13px 32px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+}
+
+.modal-confirm-btn:hover {
+    background: #ffffff;
+    color: #1e0033;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.5);
+}
+
+/* FOOTER COPYRIGHT STYLING */
+.modal-footer {
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+.modal-footer p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    letter-spacing: 0.5px;
+}
+
+@media (max-width: 480px) {
+    .modal-card {
+        padding: 28px 20px 18px;
+    }
+    .modal-notice-text {
+        font-size: 1.15rem;
+    }
+    .modal-heading {
+        font-size: 1.6rem;
+    }
 }

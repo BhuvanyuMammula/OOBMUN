@@ -270,3 +270,34 @@ if (modalOverlay) {
         }
     });
 }
+
+function showForm(type, event) {
+  if (event) event.preventDefault();
+
+  // 1. Hide all form containers
+  const containers = document.querySelectorAll('.form-embed-container');
+  containers.forEach(container => {
+    container.classList.remove('active');
+    container.style.display = 'none'; // Direct inline fallback
+  });
+
+  // 2. Deactivate all buttons
+  const buttons = document.querySelectorAll('.reg-btn');
+  buttons.forEach(button => {
+    button.classList.remove('active');
+  });
+
+  // 3. Resolve target ID (checks both 'form-admin' and 'admin')
+  const targetId = type.startsWith('form-') ? type : 'form-' + type;
+  const targetContainer = document.getElementById(targetId) || document.getElementById(type);
+
+  if (targetContainer) {
+    targetContainer.classList.add('active');
+    targetContainer.style.display = 'block'; // Force visibility
+  }
+
+  // 4. Highlight clicked button
+  if (event && event.currentTarget) {
+    event.currentTarget.classList.add('active');
+  }
+}

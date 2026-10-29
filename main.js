@@ -135,9 +135,8 @@ document.querySelectorAll(".card, .feature-content").forEach(el => {
     observer.observe(el);
 });
 
-// =========================================
+
 // PRODUCTION-GRADE FLIP COUNTDOWN LOGIC
-// =========================================
 
 const eventDate = new Date("October 31, 2026 08:00:00").getTime();
 
@@ -213,11 +212,8 @@ if (document.readyState === "loading") {
 } else {
     updateTimer();
     setInterval(updateTimer, 1000);
-}
 
-// =========================================
 // REGISTRATION MODAL POPUP LOGIC
-// =========================================
 
 const modalOverlay = document.getElementById("registration-modal");
 const modalCloseBtn = document.querySelector(".modal-close");

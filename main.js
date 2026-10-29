@@ -135,7 +135,9 @@ document.querySelectorAll(".card, .feature-content").forEach(el => {
 });
 
 
-const eventDate = new Date("2026-11-07T08:00:00").getTime();
+
+
+const eventDate = new Date(2026, 10, 7, 8, 0, 0).getTime(); 
 
 function setSingleDigit(elementId, newChar) {
     const el = document.getElementById(elementId);
@@ -209,8 +211,9 @@ if (document.readyState === "loading") {
 } else {
     updateTimer();
     setInterval(updateTimer, 1000);
+}
 
-// REGISTRATION MODAL POPUP LOGIC
+
 
 const modalOverlay = document.getElementById("registration-modal");
 const modalCloseBtn = document.querySelector(".modal-close");

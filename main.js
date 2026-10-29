@@ -138,7 +138,7 @@ document.querySelectorAll(".card, .feature-content").forEach(el => {
 
 // PRODUCTION-GRADE FLIP COUNTDOWN LOGIC
 
-const eventDate = new Date("November 7, 2026 08:00:00").getTime();
+const eventDate = new Date("2026-11-07T08:00:00").getTime();
 
 function setSingleDigit(elementId, newChar) {
     const el = document.getElementById(elementId);

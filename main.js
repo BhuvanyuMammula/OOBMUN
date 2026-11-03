@@ -42,8 +42,6 @@ if (navToggle && navLinks) {
         const isOpen = navLinks.classList.toggle("active");
         navToggle.classList.toggle("active");
         navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-        
-        document.body.style.overflow = isOpen ? "hidden" : "";
     });
 
     navLinks.querySelectorAll("a").forEach(link => {
@@ -51,7 +49,6 @@ if (navToggle && navLinks) {
             navLinks.classList.remove("active");
             navToggle.classList.remove("active");
             navToggle.setAttribute("aria-expanded", "false");
-            document.body.style.overflow = "";
         });
     });
 
@@ -60,7 +57,6 @@ if (navToggle && navLinks) {
             navLinks.classList.remove("active");
             navToggle.classList.remove("active");
             navToggle.setAttribute("aria-expanded", "false");
-            document.body.style.overflow = "";
         }
     });
 }

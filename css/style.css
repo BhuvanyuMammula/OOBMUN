@@ -1,5 +1,5 @@
 /*
-OOB MUN THEME Cascading Style Sheet (Style) - [ GET OUT OF INSPECT COPYRIGHT CODE APPLIES ]
+OOB MUN THEME Cascading Style Sheet (Style) - 
 */
 
 :root{
@@ -48,40 +48,40 @@ NAVBAR
 */
 
 .navbar{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-padding:18px 7%;
-display:flex;
-justify-content:space-between;
-align-items:center;
-background:linear-gradient(
-180deg,
-rgba(10,0,20,.98) 0%,
-rgba(20,5,40,.90) 40%,
-rgba(40,10,60,.60) 70%,
-rgba(40,10,60,0) 100%
-);
-transition:
-background-color .4s ease,
-padding .4s ease,
-box-shadow .4s ease,
-backdrop-filter .4s ease;
-backdrop-filter:blur(6px);
-z-index:1000;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    padding:18px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:linear-gradient(
+        180deg,
+        rgba(10,0,20,.98) 0%,
+        rgba(20,5,40,.90) 40%,
+        rgba(40,10,60,.60) 70%,
+        rgba(40,10,60,0) 100%
+    );
+    transition:
+        background-color .4s ease,
+        padding .4s ease,
+        box-shadow .4s ease,
+        backdrop-filter .4s ease;
+    backdrop-filter:blur(6px);
+    z-index:1000;
 }
 
 .navbar.scrolled{
-background: linear-gradient(
-180deg,
-rgba(10,0,20,.98) 0%,
-rgba(20,5,40,.90) 40%,
-rgba(40,10,60,.60) 70%,
-rgba(40,10,60,0) 100%
-);
-backdrop-filter: blur(6px);
-box-shadow: 0 10px 30px rgba(0,0,0,.40);
+    background: linear-gradient(
+        180deg,
+        rgba(10,0,20,.98) 0%,
+        rgba(20,5,40,.90) 40%,
+        rgba(40,10,60,.60) 70%,
+        rgba(40,10,60,0) 100%
+    );
+    backdrop-filter: blur(6px);
+    box-shadow: 0 10px 30px rgba(0,0,0,.40);
 }
 
 .navbar a.logo::after {
@@ -108,110 +108,119 @@ box-shadow: 0 10px 30px rgba(0,0,0,.40);
 }
 
 .logo h2{
-font-family: "Bodoni Moda", serif;
-font-size:2rem;
-font-weight:700;
-letter-spacing:3px;
-color:white;
+    font-family: "Bodoni Moda", serif;
+    font-size:2rem;
+    font-weight:700;
+    letter-spacing:3px;
+    color:white;
 }
-
-.navbar ul{
-display:flex;
-align-items:center;
-gap:45px;
-}
-
-.navbar li{
-display:inline-block;
-}
-
-.navbar a{
-position:relative;
-color:white;
-font-size:18px;
-font-weight:500;
-transition:.3s;
-}
-
-.navbar a:hover{
-color:var(--gold);
-}
-
-.navbar a::after{
-content:"";
-position:absolute;
-left:50%;
-bottom:-8px;
-width:0;
-height:2px;
-background:var(--gold);
-transition:.35s;
-transform:translateX(-50%);
-}
-
-.navbar a:hover::after{
-width:100%;
-}
-
-/*
-NAV TOGGLE (MOBILE) - (failsafe works)
-*/
 
 .nav-toggle {
-    display: none;
+    display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 30px;
-    height: 21px;
+    width: 32px;
+    height: 22px;
     background: transparent;
     border: none;
     cursor: pointer;
     padding: 0;
+    z-index: 1002;
 }
 
 .nav-toggle span {
     width: 100%;
     height: 3px;
-    background-color: #ffffff;
+    background-color: var(--gold, #D4AF37);
     border-radius: 3px;
-    transition: all 0.3s ease;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .nav-toggle.active span:nth-child(1) {
-    transform: translateY(9px) rotate(45deg);
+    transform: translateY(9.5px) rotate(45deg);
 }
 
 .nav-toggle.active span:nth-child(2) {
     opacity: 0;
+    transform: scale(0);
 }
 
 .nav-toggle.active span:nth-child(3) {
-    transform: translateY(-9px) rotate(-45deg);
+    transform: translateY(-9.5px) rotate(-45deg);
 }
 
-@media (max-width: 992px) {
-    .nav-toggle {
-        display: flex;
-    }
-    .navbar ul{
-        position:fixed;
-        top:0;
-        right:-100%;
-        width:min(75%,320px);
-        height:100vh;
-        flex-direction:column;
-        justify-content:center;
-        gap:35px;
-        background:rgba(20,0,35,.98);
-        backdrop-filter:blur(14px);
-        transition:right .4s ease;
-    }
-    .navbar ul.active{
-        right:0;
-    }
+.navbar ul{
+    position: fixed;
+    top: 85px;
+    right: 5%;
+    width: 280px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: rgba(20, 5, 35, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 20px;
+    padding: 16px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.7),
+                inset 0 0 15px rgba(212, 175, 55, 0.08);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-15px) scale(0.95);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 1001;
+    list-style: none;
+    margin: 0;
 }
+
 .navbar ul.active{
-right:0;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+}
+
+.navbar li{
+    display: block;
+    width: 100%;
+}
+
+.navbar a{
+    display: block;
+    width: 100%;
+    padding: 12px 18px;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    text-align: left;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    transition: all 0.25s ease;
+    text-decoration: none;
+}
+
+.navbar a:hover{
+    color: var(--gold);
+    background: rgba(212, 175, 55, 0.15);
+    border-color: rgba(212, 175, 55, 0.4);
+    transform: translateX(4px);
+}
+
+.navbar a::after{
+    display: none !important;
+}
+
+@media (max-width: 600px) {
+    .navbar ul {
+        right: 4%;
+        width: 88%;
+        max-width: 300px;
+    }
 }
 
 /*

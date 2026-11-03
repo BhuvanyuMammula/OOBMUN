@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delegate Resources | OOB MUN 2026</title>
+    <meta name="description" content="Download official background guides and the Delegate Handbook for OOB MUN 2026.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <script defer src="main.js"></script>
+
+    <style>
+  
+        .textured-bg {
+            background-color: var(--purple-dark, #1e0033);
+            padding: 80px 5% 120px 5%;
+            min-height: 100vh;
+        }
+
+        .resources-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+
+        .edition-tab {
+            background: transparent;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 12px;
+            margin-bottom: 25px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .edition-tab[open] {
+            border-color: rgba(212, 175, 55, 0.7);
+        }
+
+        .edition-tab summary {
+            padding: 25px 40px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            font-size: 1.4rem;
+            letter-spacing: 2px;
+            color: var(--gold, #d4af37);
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.2);
+            transition: background 0.3s ease;
+        }
+
+        .edition-tab summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .edition-tab summary:hover {
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .tab-content {
+            padding: 30px 40px 60px 40px;
+            background: transparent;
+        }
+
+        .section-subtitle {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: #ffffff;
+            text-align: center;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin: 10px 0 35px 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding-bottom: 15px;
+        }
+
+ 
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+     
+        .download-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            border-radius: 12px;
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            text-decoration: none;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+        }
+
+        .download-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--gold, #d4af37);
+            background: rgba(212, 175, 55, 0.08);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4), 0 0 15px rgba(212, 175, 55, 0.2);
+        }
+
+
+        .file-icon-badge {
+            flex-shrink: 0;
+            width: 52px;
+            height: 60px;
+            background: linear-gradient(135deg, #3c1354 0%, #1a002c 100%);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            position: relative;
+            transition: border-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .file-icon-badge::before {
+            content: "PDF";
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--gold, #d4af37);
+            letter-spacing: 1px;
+        }
+
+        .download-card:hover .file-icon-badge {
+            border-color: var(--gold, #d4af37);
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+
+        .file-details {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .file-name {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #ffffff;
+            margin-bottom: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .file-meta {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .handbook-card {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(40, 10, 60, 0.4) 100%);
+            border: 1.5px solid var(--gold, #d4af37);
+        }
+
+        @media (max-width: 768px) {
+            .tab-content {
+                padding: 20px 15px 40px 15px;
+            }
+            .resource-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="OOB MUN Logo">
+            </a>
+
+            <ul id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="secretariat.html">Secretariat</a></li>
+                <li><a href="committees.html">Committees</a></li>
+                <li><a href="resources.html" class="active">Resources</a></li>
+                <li><a href="schedule.html">Schedule</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Registration</a></li>
+            </ul>
+
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <section class="hero page-hero">
+        <video autoplay loop muted playsinline class="hero-image">
+            <source src="images/backgroundvideo.mp4" type="video/mp4">
+        </video>
+        <div class="hero-content">
+            <h1>DELEGATE RESOURCES</h1>
+        </div>
+    </section>
+
+    <div class="textured-bg">
+        <div class="resources-container">
+
+            <!-- SEPARATE COLUMN: DELEGATE HANDBOOK -->
+            <details class="edition-tab" open>
+                <summary>
+                    <span class="tab-title">DELEGATE HANDBOOK</span>
+                </summary>
+                <div class="tab-content">
+                    <h2 class="section-subtitle">Official Conference Rules & Guide</h2>
+                    <div class="resource-grid">
+                        <a href="files/OOBMUN2026_Delegate_Handbook.pdf" download class="download-card handbook-card">
+                            <div class="file-icon-badge"></div>
+                            <div class="file-details">
+                                <span class="file-name">OOB MUN 2026 Delegate Handbook</span>
+                                <span class="file-meta">PDF Document • 5.12 MB</span>
+                            </div>
+                        </a>
+                        <a href="files/OOBMUN2026_Rules_of_Procedure.pdf" download class="download-card handbook-card">
+                            <div class="file-icon-badge"></div>
+                            <div class="file-details">
+                                <span class="file-name">Rules of Procedure (ROP) OOB'26</span>
+                                <span class="file-meta">PDF Document • 2.10 MB</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </details>
+
+            <!-- BACKGROUND GUIDES ACCORDION (OOB MUN 2026) -->
+            <details class="edition-tab" open>
+                <summary>
+                    <span class="tab-title">OOB MUN 2026</span>
+                </summary>
+                <div class="tab-content">
+                    <h2 class="section-subtitle">Committee Background Guides</h2>
+                    <div class="resource-grid">
+                        
+                        <!-- UNSC -->
+                        <a href="files/UNSC_background_guide_OOB26.pdf" download class="download-card">
+                            <div class="file-icon-badge"></div>
+                            <div class="file-details">
+                                <span class="file-name">UNSC background guide OOB'26</span>
+                                <span class="file-meta">PDF Document • 3.54 MB</span>
+                            </div>
+                        </a>
+
+                        <!-- UNHCR -->
+                        <a href="files/UNHCR_background_guide_OOB26.pdf" download class="download-card">
+                            <div class="file-icon-badge"></div>
+                            <div class="file-details">
+                                <span class="file-name">UNHCR background guide OOB'26</span>
+                                <span class="file-meta">PDF Document • 3.38 MB</span>
+                            </div>
+                        </a>
+
+                        <!-- UNEP -->
+                        <a href="files/UNEP_background_guide_OOB26.pdf" download class="download-card">
+                            <div class="file-icon-badge"></div>
+                            <div class="file-details">
+                                <span class="file-name">UNEP background guide OOB'26</span>
+                                <span class="file-meta">PDF Document • 3.46 MB</span>
+                            </div>
+                        </a>
+
+                        <!-- UNCSW -->
+                        <a href="files/UNCSW_background_guide_OOB26.pdf" download class="download-card">
+                            <div class="file-icon-badge"></div>
+                            <div class="file-details">
+                                <span class="file-name">UNCSW background guide OOB'26</span>
+                                <span class="file-meta">PDF Document • 3.16 MB</span>
+                            </div>
+                        </a>
+
+                        <!-- ECOSOC -->
+                        <a href="files/ECOSOC_background_guide_OOB26.pdf" download class="download-card">
+                            <div class="file-icon-badge"></div>
+                            <div class="file-details">
+                                <span class="file-name">ECOSOC background guide OOB'26</span>
+                                <span class="file-meta">PDF Document • 2.70 MB</span>
+                            </div>
+                        </a>
+
+                        <!-- DISEC -->
+                        <a href="files/DISEC_background_guide_OOB26.pdf" download class="download-card">
+                            <div class="file-icon-badge"></div>
+                            <div class="file-details">
+                                <span class="file-name">DISEC background guide OOB'26</span>
+                                <span class="file-meta">PDF Document • 4.65 MB</span>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+            </details>
+
+        </div>
+    </div>
+
+    <footer>
+        <img src="images/ooblogo.png" alt="OOB MUN Logo" class="footer-logo">
+        <p>© 2026 OOB MUN • Student-Led Conference • Website designed by Bhuvanyu Mammula</p>
+    </footer>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TJVTLTJTM3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-TJVTLTJTM3');
+    </script>
+</body>
+
+</html>
